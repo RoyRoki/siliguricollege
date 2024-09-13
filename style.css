@@ -158,3 +158,58 @@ tbody td::after {
         table-layout: fixed; /* Ensures the table is well-proportioned on larger screens */
     }
 }
+
+
+
+
+.digital-clock {
+    background: rgba(255, 255, 255, 0.2); /* Glassy effect */
+    color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px); /* Glassy blur effect */
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    animation: pulse 2s infinite;
+}
+
+.clock-display {
+    font-size: 5rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.date-display {
+    margin-top: 10px;
+    font-size: 1.5rem;
+    color: #ddd;
+}
+
+#hours, #minutes, #seconds {
+    display: inline-block;
+    min-width: 70px;
+}
+
+#ampm {
+    font-size: 1.5rem;
+    font-weight: normal;
+    margin-left: 10px;
+}
+
+/* Animation for floating effect */
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+    .clock-display {
+        font-size: 4rem;
+    }
+    .date-display {
+        font-size: 1.2rem;
+    }
+}

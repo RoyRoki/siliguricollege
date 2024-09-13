@@ -91,3 +91,43 @@ function displayMotivationalLine() {
 
 // Call the function when the page loads
 window.onload = displayMotivationalLine;
+
+
+
+
+function updateClock() {
+    const now = new Date();
+    const hours = now.getHours();
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const seconds = now.getSeconds().toString().padStart(2, '0');
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    const formattedHours = hours % 12 || 12; // Convert 24-hour to 12-hour format
+    const displayHours = formattedHours.toString().padStart(2, '0');
+
+    document.getElementById('hours').textContent = displayHours;
+    document.getElementById('minutes').textContent = minutes;
+    document.getElementById('seconds').textContent = seconds;
+    document.getElementById('ampm').textContent = ampm;
+
+    const date = now.toDateString();
+    document.getElementById('date').textContent = date;
+
+    // Set background color based on time of day
+    const hoursIn24 = now.getHours();
+    if (hoursIn24 >= 6 && hoursIn24 < 12) {
+        // Morning (Sunrise)
+        document.body.style.background = 'linear-gradient(135deg, #ff7e5f, #feb47b)';
+    } else if (hoursIn24 >= 12 && hoursIn24 < 18) {
+        // Afternoon (Daylight)
+        document.body.style.background = 'linear-gradient(135deg, #00c6ff, #0072ff)';
+    } else if (hoursIn24 >= 18 && hoursIn24 < 20) {
+        // Evening (Sunset)
+        document.body.style.background = 'linear-gradient(135deg, #ff9a9e, #fad0c4)';
+    } else {
+        // Night
+        document.body.style.background = 'linear-gradient(135deg, #2c3e50, #34495e)';
+    }
+}
+
+setInterval(updateClock, 1000);
+updateClock(); // Initial call to display the time immediately
