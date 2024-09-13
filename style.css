@@ -98,6 +98,7 @@ img {
     color: #333;
 }
 .clock {
+    margin: 20px auto;
     position: absolute;
     bottom: 10px;
     left: 50%;
