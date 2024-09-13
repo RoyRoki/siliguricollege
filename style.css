@@ -1,7 +1,8 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    background-color: #f0f0f0;
+    background-color: #e0f7fa; /* Soft blue background */
+    background-image: linear-gradient(135deg, #e0f7fa 30%, #ffccbc 100%); /* Gradient for a modern look */
     margin: 0;
     padding: 0;
 }
@@ -9,20 +10,27 @@ body {
 h1 {
     color: #333;
     margin-top: 20px;
-    font-size: 24px;
-    padding: 10px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    font-size: 28px;
+    padding: 15px 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
     display: inline-block;
+    transition: all 0.3s ease;
+}
+
+h1:hover {
+    background-color: #f7f7f7;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
 .timetable {
-    margin: 20px auto;
+    margin: 30px auto;
     width: 90%;
+    max-width: 1200px;
     background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
     overflow: hidden;
 }
 
@@ -34,14 +42,16 @@ table {
 thead th {
     background-color: #4CAF50;
     color: white;
-    padding: 10px;
+    padding: 15px;
+    font-size: 16px;
 }
 
 td, th {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 12px;
     text-align: center;
     font-size: 14px;
+    word-wrap: break-word; /* Allows longer class names to wrap */
 }
 
 tbody tr:nth-child(even) {
@@ -49,26 +59,66 @@ tbody tr:nth-child(even) {
 }
 
 tbody td:hover {
-    background-color: #ddd;
+    background-color: #e0f7fa;
+    transition: background-color 0.3s ease;
 }
 
 tbody td {
     position: relative;
 }
 
-/* Highlight the current class */
 .highlight {
-    background-color: yellow;
+    background-color: #ffe082; /* Softer yellow for highlight */
     color: black;
     font-weight: bold;
 }
 
-/* Styling the time in the corner (optional) */
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+        width: 100%;
+    }
+    
+    thead tr {
+        display: none;
+    }
+
+    tbody td {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    tbody td::before {
+        content: attr(data-day) ' ' attr(data-time);
+        font-weight: bold;
+        color: #333;
+    }
+
+    tbody td[data-day]::after {
+        content: none;
+    }
+    
+    .timetable {
+        width: 100%;
+    }
+}
+
+/* Beautiful time display inside the cells (optional) */
 tbody td::after {
     content: attr(data-time);
     position: absolute;
-    top: 2px;
-    right: 2px;
+    top: 5px;
+    right: 10px;
     font-size: 10px;
     color: #888;
+}
+
+/* Table and content look on larger screens */
+@media (min-width: 769px) {
+    table {
+        table-layout: fixed; /* Ensures the table is well-proportioned on larger screens */
+    }
 }
