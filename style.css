@@ -84,7 +84,7 @@ img {
 }
 
 /* Styles for motivational line container */
-.motivational-container {
+.motivational-container, .clock {
     margin: 20px auto;
     margin-top: 60px;
     width: 90%;
