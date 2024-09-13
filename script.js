@@ -19,10 +19,9 @@ const classTimetable = [
     { day: 'Friday', time: '1:00 PM', subject: 'MATH 20' },
     { day: 'Friday', time: '2:00 PM', subject: 'BCA SUK' },
     { day: 'Friday', time: '3:00 PM', subject: 'BCA PKW' }
-    // Add more classes if needed
 ];
 
-// Function to check the current day and time and remind about class
+// Function to check the current day and time, highlight the subject, and update the header
 function checkClassReminder() {
     const currentTime = new Date();
     const currentDay = currentTime.toLocaleString('en-us', { weekday: 'long' });
@@ -31,11 +30,33 @@ function checkClassReminder() {
     const currentAMPM = currentHour >= 12 ? 'PM' : 'AM';
     const currentFormattedTime = `${(currentHour % 12 || 12)}:${currentMinute.toString().padStart(2, '0')} ${currentAMPM}`;
 
+    let classFound = false;
+
     classTimetable.forEach(classItem => {
+        const cells = document.querySelectorAll(`td[data-day="${classItem.day}"][data-time="${classItem.time}"]`);
+        
+        // Remove previous highlights
+        cells.forEach(cell => {
+            cell.classList.remove('highlight');
+        });
+
+        // Check if the current time matches the class time
         if (classItem.day === currentDay && classItem.time === currentFormattedTime) {
-            alert(`Reminder: Your ${classItem.subject} class is starting now!`);
+            // Highlight the corresponding table cell
+            cells.forEach(cell => {
+                cell.classList.add('highlight');
+            });
+
+            // Update the header with the current class
+            document.querySelector('h1').innerText = `Current Class: ${classItem.subject}`;
+            classFound = true;
         }
     });
+
+    // Reset the header if no class is found
+    if (!classFound) {
+        document.querySelector('h1').innerText = "College Timetable Reminder";
+    }
 }
 
 // Check for class reminder every minute
@@ -43,4 +64,6 @@ setInterval(checkClassReminder, 60000);
 
 // Log current time for debugging purposes
 console.log(new Date().toLocaleString());
-      
+
+// Run the check immediately on page load
+checkClassReminder();
