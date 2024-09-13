@@ -116,16 +116,16 @@ function updateClock() {
     const hoursIn24 = now.getHours();
     if (hoursIn24 >= 6 && hoursIn24 < 12) {
         // Morning (Sunrise)
-        document.getElementsByClassName("clock").style.background = 'linear-gradient(135deg, #ff7e5f, #feb47b)';
+        document.getElementsById("clock").style.background = 'linear-gradient(135deg, #ff7e5f, #feb47b)';
     } else if (hoursIn24 >= 12 && hoursIn24 < 18) {
         // Afternoon (Daylight)
-        document.getElementsByClassName("clock").style.background = 'linear-gradient(135deg, #00c6ff, #0072ff)';
+        document.getElementById("clock").style.background = 'linear-gradient(135deg, #00c6ff, #0072ff)';
     } else if (hoursIn24 >= 18 && hoursIn24 < 20) {
         // Evening (Sunset)
-        document.getElementsByClassName("clock").style.background = 'linear-gradient(135deg, #ff9a9e, #fad0c4)';
+        document.getElementById("clock").style.background = 'linear-gradient(135deg, #ff9a9e, #fad0c4)';
     } else {
         // Night
-        document.getElementsByClassName("clock").style.background = 'linear-gradient(135deg, #2c3e50, #34495e)';
+        document.getElementById("clock").style.background = 'linear-gradient(135deg, #2c3e50, #34495e)';
     }
 }
 

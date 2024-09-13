@@ -97,6 +97,9 @@ img {
     font-size: 3.2rem;
     color: #333;
 }
+.clock {
+    background-color: transparent;
+}
 
 #motivational-line {
     font-style: italic;
