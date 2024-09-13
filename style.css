@@ -181,13 +181,14 @@ tbody td::after {
     font-size: 5rem;
     font-weight: bold;
     letter-spacing: 2px;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    
 }
 
 .date-display {
     margin-top: 10px;
     font-size: 1.5rem;
-    color: #3d3939d0
+    color: #3d3939d0;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
 
 #hours, #minutes, #seconds {
