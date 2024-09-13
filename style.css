@@ -102,6 +102,8 @@ img {
     bottom: 10px;
     left: 20%;
     right: 20%;
+    width: auto;
+    border-radius: 12px;
 }
 
 #motivational-line {
@@ -186,7 +188,7 @@ tbody td::after {
 .date-display {
     margin-top: 10px;
     font-size: 1.5rem;
-    color: #3f3c3cd0;
+    color: #3d3939d0
 }
 
 #hours, #minutes, #seconds {
