@@ -75,9 +75,18 @@ tbody td {
     color: black;
     font-weight: bold;
 }
-
+img {
+    display: none;
+}
 /* Responsive adjustments */
 @media (max-width: 768px) {
+    img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin-top: 20px; 
+
+    }
     table, thead, tbody, th, td, tr {
         display: block;
         width: 100%;
@@ -121,6 +130,13 @@ tbody td::after {
 
 /* Table and content look on larger screens */
 @media (min-width: 769px) {
+    img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin-top: 20px; 
+
+    }
     table {
         table-layout: fixed; /* Ensures the table is well-proportioned on larger screens */
     }
