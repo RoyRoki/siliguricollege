@@ -78,6 +78,9 @@ tbody td {
 }
 img {
     display: none;
+    max-width: 100%;
+    height: auto;
+    margin: 40px auto 0;
 }
 /* Styles for motivational line container */
 .motivational-container {
@@ -110,10 +113,6 @@ img {
     }
     img {
         display: block;
-        max-width: 100%;
-        height: auto;
-        margin: 40px auto 0;
-
     }
     table, thead, tbody, th, td, tr {
         display: block;
