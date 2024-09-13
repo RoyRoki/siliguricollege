@@ -95,6 +95,7 @@ img {
 /* Style for motivational line text */
 #motivational-line {
     font-style: italic;
+    font-weight: bold;
     color: #4CAF50; /* Motivational green color */
 }
 
