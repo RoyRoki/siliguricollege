@@ -98,7 +98,7 @@ img {
     color: #333;
 }
 .clock {
-    background-color: transparent;
+    background-color: rgba(115, 112, 112, 0.368);
 }
 
 #motivational-line {
