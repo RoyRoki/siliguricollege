@@ -67,3 +67,27 @@ setInterval(checkClassReminder, 60000);
 
 // Initial call to checkClassReminder on page load
 checkClassReminder();
+
+// Array of motivational study lines
+const motivationalLines = [
+    "The only way to do great work is to love what you do.",
+    "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+    "Don’t watch the clock; do what it does. Keep going.",
+    "Believe you can and you’re halfway there.",
+    "The future depends on what you do today.",
+    "Start where you are. Use what you have. Do what you can.",
+    "Success is not in what you have, but who you are.",
+    "The harder you work for something, the greater you’ll feel when you achieve it.",
+    "Dream it. Believe it. Build it.",
+    "Your limitation—it's only your imagination."
+];
+
+// Function to display a random motivational line
+function displayMotivationalLine() {
+    const randomIndex = Math.floor(Math.random() * motivationalLines.length);
+    const line = motivationalLines[randomIndex];
+    document.getElementById('motivational-line').textContent = line;
+}
+
+// Call the function when the page loads
+window.onload = displayMotivationalLine;
