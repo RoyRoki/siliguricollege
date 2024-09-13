@@ -183,7 +183,7 @@ tbody td::after {
 .date-display {
     margin-top: 10px;
     font-size: 1.5rem;
-    color: #707070;
+    color: #3f3c3cd0;
 }
 
 #hours, #minutes, #seconds {
