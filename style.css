@@ -2,13 +2,12 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
     background: linear-gradient(135deg, #e0f7fa 30%, #ffccbc 100%);
-    background-attachment: fixed; /* Ensures the gradient stays fixed */
-    background-size: cover; /* Ensures the gradient covers the entire body */
-    background-repeat: no-repeat; /* Prevents the background from repeating */
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
     margin: 0;
-    padding-bottom: -15px;
     padding: 0;
-    min-height: 100vh; /* Ensures the body covers at least the full viewport height */
+    min-height: 100vh;
 }
 
 h1 {
@@ -55,7 +54,7 @@ td, th {
     padding: 12px;
     text-align: center;
     font-size: 14px;
-    word-wrap: break-word; /* Allows longer class names to wrap */
+    word-wrap: break-word;
 }
 
 tbody tr:nth-child(even) {
@@ -72,16 +71,18 @@ tbody td {
 }
 
 .highlight {
-    background-color: #ffe082; /* Softer yellow for highlight */
+    background-color: #ffe082;
     color: black;
     font-weight: bold;
 }
+
 img {
     display: block;
     max-width: 100%;
     height: auto;
     margin: 40px auto 0;
 }
+
 /* Styles for motivational line container */
 .motivational-container {
     margin: 20px auto;
@@ -97,11 +98,10 @@ img {
     color: #333;
 }
 
-/* Style for motivational line text */
 #motivational-line {
     font-style: italic;
     font-weight: bold;
-    color: #4CAF50; /* Motivational green color */
+    color: #4CAF50;
 }
 
 /* Responsive adjustments */
@@ -142,7 +142,6 @@ img {
     }
 }
 
-/* Beautiful time display inside the cells (optional) */
 tbody td::after {
     content: attr(data-time);
     position: absolute;
@@ -152,23 +151,20 @@ tbody td::after {
     color: #888;
 }
 
-/* Table and content look on larger screens */
 @media (min-width: 769px) {
     table {
-        table-layout: fixed; /* Ensures the table is well-proportioned on larger screens */
+        table-layout: fixed;
     }
 }
 
-
-
-
+/* Digital clock styles */
 .digital-clock {
-    background: rgba(255, 255, 255, 0.2); /* Glassy effect */
+    background: rgba(255, 255, 255, 0.2);
     color: #fff;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px); /* Glassy blur effect */
+    backdrop-filter: blur(10px);
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
     animation: pulse 2s infinite;

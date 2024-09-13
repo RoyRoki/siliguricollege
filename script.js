@@ -131,3 +131,4 @@ function updateClock() {
 
 setInterval(updateClock, 1000);
 updateClock(); // Initial call to display the time immediately
+
