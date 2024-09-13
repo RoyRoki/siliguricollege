@@ -101,6 +101,7 @@ img {
     margin: 20px auto;
     position: absolute;
     bottom: 10px;
+    min-width: 580px;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -175,6 +176,7 @@ tbody td::after {
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
     animation: pulse 2s infinite;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
 
 .clock-display {
@@ -187,7 +189,7 @@ tbody td::after {
 .date-display {
     margin-top: 10px;
     font-size: 1.5rem;
-    color: #3d3939d0;
+    color: #dedbdbd0;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
 
