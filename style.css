@@ -89,6 +89,7 @@ img {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
     padding: 20px;
+    display: grid;
     text-align: center;
     align-items: center;
     font-size: 3.2rem;
