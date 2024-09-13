@@ -100,10 +100,7 @@ img {
 .clock {
     position: absolute;
     bottom: 10px;
-    left: 20%;
-    right: 20%;
-    width: 580px;
-    border-radius: 12px;
+    align-items: center;
 }
 
 #motivational-line {
