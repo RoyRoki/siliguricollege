@@ -111,9 +111,6 @@ img {
         border-radius: 10px;
         padding: 5px;
     }
-    img {
-        display: block;
-    }
     table, thead, tbody, th, td, tr {
         display: block;
         width: 100%;
@@ -157,14 +154,6 @@ tbody td::after {
 
 /* Table and content look on larger screens */
 @media (min-width: 769px) {
-    img {
-        display: block;
-        max-width: 100%;
-        height: auto;
-        margin-top: 40px; 
-        padding: auto;
-
-    }
     table {
         table-layout: fixed; /* Ensures the table is well-proportioned on larger screens */
     }
