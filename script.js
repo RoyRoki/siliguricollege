@@ -1,27 +1,4 @@
-// Create a list of class reminders based on the timetable
-const classTimetable = [
-    { day: 'Monday', time: '10:00 AM', subject: 'BCA 22 PC' },
-    { day: 'Monday', time: '11:00 AM', subject: 'BCA 22 PC' },
-    { day: 'Monday', time: '1:00 PM', subject: 'Bengali' },
-    { day: 'Monday', time: '2:00 PM', subject: 'BCA SUK' },
-    { day: 'Monday', time: '3:00 PM', subject: 'BCA SUK' },
-    { day: 'Tuesday', time: '10:00 AM', subject: 'BCA 23 PR' },
-    { day: 'Tuesday', time: '1:00 PM', subject: 'MATH 16' },
-    { day: 'Tuesday', time: '2:00 PM', subject: 'BCA 25K' },
-    { day: 'Wednesday', time: '10:00 AM', subject: 'SEL' },
-    { day: 'Wednesday', time: '1:00 PM', subject: 'BCA DBMS PR' },
-    { day: 'Wednesday', time: '2:00 PM', subject: 'BCA DBMS SEL' },
-    { day: 'Wednesday', time: '3:00 PM', subject: 'BCA SEL PKW' },
-    { day: 'Thursday', time: '10:00 AM', subject: 'BCA 23 PR' },
-    { day: 'Thursday', time: '1:00 PM', subject: 'MATH 20' },
-    { day: 'Thursday', time: '2:00 PM', subject: 'BCA 25K' },
-    { day: 'Thursday', time: '3:00 PM', subject: 'BCA SUK' },
-    { day: 'Friday', time: '1:00 PM', subject: 'MATH 20' },
-    { day: 'Friday', time: '2:00 PM', subject: 'BCA SUK' },
-    { day: 'Friday', time: '3:00 PM', subject: 'BCA PKW' }
-];
-
-// Function to check the current day and time, highlight the subject, and update the header
+// Function to check the current day and time, highlight the upcoming class, and update the header
 function checkClassReminder() {
     const currentTime = new Date();
     const currentDay = currentTime.toLocaleString('en-us', { weekday: 'long' });
@@ -30,40 +7,63 @@ function checkClassReminder() {
     const currentAMPM = currentHour >= 12 ? 'PM' : 'AM';
     const currentFormattedTime = `${(currentHour % 12 || 12)}:${currentMinute.toString().padStart(2, '0')} ${currentAMPM}`;
 
-    let classFound = false;
+    let nextClassFound = false;
+    let nextClass = null;
 
-    classTimetable.forEach(classItem => {
-        const cells = document.querySelectorAll(`td[data-day="${classItem.day}"][data-time="${classItem.time}"]`);
-        
-        // Remove previous highlights
-        cells.forEach(cell => {
-            cell.classList.remove('highlight');
-        });
+    // Remove any previous highlights
+    document.querySelectorAll('td').forEach(cell => {
+        cell.classList.remove('highlight');
+    });
 
-        // Check if the current time matches the class time
-        if (classItem.day === currentDay && classItem.time === currentFormattedTime) {
-            // Highlight the corresponding table cell
-            cells.forEach(cell => {
-                cell.classList.add('highlight');
-            });
+    // Loop through the timetable and find the upcoming class
+    document.querySelectorAll('td[data-day]').forEach(cell => {
+        const classDay = cell.getAttribute('data-day');
+        const classTime = cell.getAttribute('data-time');
 
-            // Update the header with the current class
-            document.querySelector('h1').innerText = `Current Class: ${classItem.subject}`;
-            classFound = true;
+        if (isUpcomingClass(currentDay, currentFormattedTime, classDay, classTime)) {
+            if (!nextClassFound || isEarlier(classTime, nextClass.getAttribute('data-time'))) {
+                nextClassFound = true;
+                nextClass = cell;
+            }
         }
     });
 
-    // Reset the header if no class is found
-    if (!classFound) {
-        document.querySelector('h1').innerText = "College Timetable Reminder";
+    // If an upcoming class is found, highlight it and update the header
+    if (nextClass) {
+        nextClass.classList.add('highlight');
+        document.querySelector('h1').textContent = `Next Class: ${nextClass.textContent} at ${nextClass.getAttribute('data-time')} (${nextClass.getAttribute('data-day')})`;
+    } else {
+        document.querySelector('h1').textContent = "No upcoming classes for today!";
     }
 }
 
-// Check for class reminder every minute
+// Helper function to check if a class is upcoming
+function isUpcomingClass(currentDay, currentTime, classDay, classTime) {
+    const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const currentDayIndex = daysOfWeek.indexOf(currentDay);
+    const classDayIndex = daysOfWeek.indexOf(classDay);
+
+    if (classDayIndex < currentDayIndex) {
+        return false; // Class is in the past
+    } else if (classDayIndex === currentDayIndex) {
+        return isLater(classTime, currentTime); // Check if class is later today
+    } else {
+        return true; // Class is on a future day
+    }
+}
+
+// Helper function to check if classTime is later than currentTime
+function isLater(classTime, currentTime) {
+    return new Date(`1970/01/01 ${classTime}`) > new Date(`1970/01/01 ${currentTime}`);
+}
+
+// Helper function to check if one time is earlier than another
+function isEarlier(time1, time2) {
+    return new Date(`1970/01/01 ${time1}`) < new Date(`1970/01/01 ${time2}`);
+}
+
+// Check for upcoming class every minute
 setInterval(checkClassReminder, 60000);
 
-// Log current time for debugging purposes
-console.log(new Date().toLocaleString());
-
-// Run the check immediately on page load
+// Initial call to checkClassReminder on page load
 checkClassReminder();
